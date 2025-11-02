@@ -16,6 +16,11 @@ const routes = [
     name: 'Counter',
     component: () => import('@/views/CounterView.vue')
   },
+  {
+    path: '/my-token',
+    name: 'MyToken',
+    component: () => import('@/views/MyTokenView.vue')
+  },
 ];
 
 // ルーターのインスタンスを作成

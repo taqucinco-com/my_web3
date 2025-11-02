@@ -4,6 +4,7 @@
       <router-link to="/" class="nav-link">ホーム</router-link>
       <router-link to="/about" class="nav-link">About</router-link>
       <router-link to="/counter" class="nav-link">カウンター</router-link>
+      <router-link to="/my-token" class="nav-link">NFT</router-link>
     </nav>
     <router-view />
   </div>
