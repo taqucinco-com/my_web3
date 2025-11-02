@@ -1,7 +1,7 @@
 # Environment variables
 .env
 .env.*
-!.env.example
+!.env.*.example
 
 # Dependencies
 /node_modules
@@ -26,3 +26,10 @@ yarn-error.log*
 .vscode
 .idea
 .DS_Store
+
+# Solidity
+solidity/broadcast/Deployment.s.sol/*
+solidity/cache/*
+
+# vue.js
+vuejs/dist/*
