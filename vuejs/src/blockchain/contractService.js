@@ -21,6 +21,7 @@ async function _connectWallet() {
 
 export async function numberService() {
     try {
+        console.log(contractAddress);
         const contract = new ethers.Contract(contractAddress, contractABI, provider);
         const value = await contract.number();
         return value.toString();

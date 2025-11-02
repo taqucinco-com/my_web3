@@ -28,8 +28,8 @@ yarn-error.log*
 .DS_Store
 
 # Solidity
-solidity/broadcast/Deployment.s.sol/*
-solidity/cache/*
+anvil/broadcast/*.s.sol/*
+anvil/cache/*
 
 # vue.js
 vuejs/dist/*
