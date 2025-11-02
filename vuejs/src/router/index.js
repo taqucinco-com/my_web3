@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HelloWorld from '@/components/HelloWorld.vue';
-
 // ルートの定義
 const routes = [
   {
@@ -16,7 +14,7 @@ const routes = [
   {
     path: '/counter',
     name: 'Counter',
-    component: HelloWorld
+    component: () => import('@/views/CounterView.vue')
   },
 ];
 
