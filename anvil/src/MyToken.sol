@@ -9,10 +9,9 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 contract MyToken is ERC721Enumerable, Ownable {
     uint256 private _nextTokenId;
 
-    constructor(address initialOwner)
-        ERC721("MyToken", "MTK")
-        Ownable(initialOwner)
-    {}
+    constructor(
+        address initialOwner
+    ) ERC721("MyToken", "MTK") Ownable(initialOwner) {}
 
     function safeMint(address to) public onlyOwner returns (uint256) {
         uint256 tokenId = _nextTokenId++;
@@ -20,7 +19,13 @@ contract MyToken is ERC721Enumerable, Ownable {
         return tokenId;
     }
 
-    function getTokensOfOwner(address owner) public view returns (uint256[] memory) {
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://taqucinco-com.github.io/my_web3/";
+    }
+
+    function getTokensOfOwner(
+        address owner
+    ) public view returns (uint256[] memory) {
         uint256 balance = balanceOf(owner);
         uint256[] memory tokenIds = new uint256[](balance);
         for (uint256 i = 0; i < balance; i++) {

@@ -4,7 +4,9 @@
     <p>Your NFT Balance: {{ balance }}</p>
     <button @click="getTokenIds">Show My Token IDs</button>
     <ul v-if="tokenIds.length">
-      <li v-for="tokenId in tokenIds" :key="tokenId">{{ tokenId }}</li>
+      <li v-for="(tokenId, index) in tokenIds" :key="tokenId">
+        Token ID: {{ tokenId }} - <a :href="tokenUris[index]" target="_blank" rel="noopener noreferrer">View Metadata</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -19,6 +21,7 @@ export default {
     return {
       balance: 0,
       tokenIds: [],
+      tokenUris: [],
     };
   },
   async mounted() {
@@ -55,6 +58,12 @@ export default {
         this.tokenIds = tokenIds.map(id => id.toString());
         const balance = await contract.balanceOf(address);
         this.balance = balance.toString();
+
+        this.tokenUris = [];
+        for (const tokenId of this.tokenIds) {
+          const uri = await contract.tokenURI(tokenId);
+          this.tokenUris.push(uri);
+        }
       }
     },
   },
